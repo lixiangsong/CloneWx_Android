@@ -1,18 +1,24 @@
 package song.com.cn.clonewx_andorid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 /**
- * Created by Administrator on 2018/11/12 0012.
+ * @author: LXS
+ * @Time: 2018/11/12 0012
+ * @Explain: 基类
  */
 
 public abstract class BaseActivity extends Activity {
+    private Toast toast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initView();
         initData();
     }
@@ -21,4 +27,38 @@ public abstract class BaseActivity extends Activity {
 
     public abstract void initData();
 
+    /**
+     * 不带参数的跳转
+     *
+     * @param zlazz
+     */
+    public void goIntent(Class zlazz) {
+        Intent intent = new Intent(this, zlazz);
+        startActivity(intent);
+    }
+
+    /**
+     * 带参数的跳转
+     *
+     * @param zlazz
+     */
+    public void goIntent(Bundle bundle, Class zlazz) {
+        Intent intent = new Intent(this, zlazz);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    /**
+     * 提示
+     *
+     * @param msg
+     */
+    public void showToast(String msg) {
+        if (toast == null) {
+            toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(msg);
+        }
+        toast.show();
+    }
 }
