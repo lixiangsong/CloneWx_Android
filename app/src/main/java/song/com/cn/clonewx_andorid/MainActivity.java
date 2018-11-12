@@ -1,7 +1,5 @@
 package song.com.cn.clonewx_andorid;
 
-import android.os.Bundle;
-
 public class MainActivity extends BaseActivity {
 
     @Override
