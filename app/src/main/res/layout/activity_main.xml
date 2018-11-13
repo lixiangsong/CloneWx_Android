@@ -3,13 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="song.com.cn.clonewx_andorid.activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color33333">
+
+        <TextView
+            style="@style/main_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="微信" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:layout_toLeftOf="@+id/right_iv"
+            android:background="@mipmap/sheceh_ic" />
+
+        <ImageView
+            android:id="@+id/right_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/add_home"
+            android:padding="16dp" />
+    </RelativeLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="45dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,9 +63,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:button="@null"
+                android:checked="true"
                 android:drawableTop="@drawable/chat_button"
                 android:gravity="center"
-                android:checked="true"
+                android:paddingTop="3dp"
                 android:text="微信"
                 android:textSize="12sp" />
 
@@ -43,6 +78,7 @@
                 android:button="@null"
                 android:drawableTop="@drawable/tongxun_button"
                 android:gravity="center"
+                android:paddingTop="3dp"
                 android:text="通讯录"
                 android:textSize="12sp" />
 
@@ -54,6 +90,7 @@
                 android:button="@null"
                 android:drawableTop="@drawable/look_button"
                 android:gravity="center"
+                android:paddingTop="3dp"
                 android:text="发现"
                 android:textSize="12sp" />
 
@@ -65,6 +102,7 @@
                 android:button="@null"
                 android:drawableTop="@drawable/my_button"
                 android:gravity="center"
+                android:paddingTop="3dp"
                 android:text="我的"
                 android:textSize="12sp" />
         </RadioGroup>
