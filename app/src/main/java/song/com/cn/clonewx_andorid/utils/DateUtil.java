@@ -21,7 +21,7 @@ public abstract class DateUtil {
             return "昨天";
         }
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date(s);
         res = simpleDateFormat.format(date);
         return res;
