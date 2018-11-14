@@ -2,6 +2,7 @@ package song.com.cn.clonewx_andorid.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,7 +23,6 @@ import song.com.cn.clonewx_andorid.utils.PinyinComparator;
 import song.com.cn.clonewx_andorid.utils.PinyinUtils;
 import song.com.cn.clonewx_andorid.widger.TitleItemDecoration;
 import song.com.cn.clonewx_andorid.widger.WaveSideBar;
-import android.support.v7.widget.DividerItemDecoration;
 /**
  * @author: LXS
  * @Time: 2018/11/13 0013
@@ -42,7 +42,7 @@ public class MailTXFragment extends Fragment {
      */
     private PinyinComparator mComparator;
     private SortRightAdapter mAdapter;
-    private List<SortModel> mDateList;
+    private List<SortModel> mDateList=new ArrayList<>();
     private TitleItemDecoration mDecoration;
 
     @Override
@@ -55,7 +55,7 @@ public class MailTXFragment extends Fragment {
 
     private void initVew() {
         mComparator = new PinyinComparator();
-        mDateList = filledData(getResources().getStringArray(R.array.date));
+        mDateList.addAll(filledData(getResources().getStringArray(R.array.date)));
 
         // 根据a-z进行排序源数据
         Collections.sort(mDateList, mComparator);
@@ -69,7 +69,6 @@ public class MailTXFragment extends Fragment {
         mDecoration = new TitleItemDecoration(getActivity(), mDateList);
         //如果add两个，那么按照先后顺序，依次渲染。
         tongxRc.addItemDecoration(mDecoration);
-
         tongxRc.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
         //设置右侧SideBar触摸监听

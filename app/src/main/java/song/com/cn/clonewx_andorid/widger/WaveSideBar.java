@@ -102,7 +102,7 @@ public class WaveSideBar extends View {
         mLetters = Arrays.asList(context.getResources().getStringArray(R.array.waveSideBarLetters));
 
         mTextColor = Color.parseColor("#969696");
-        mWaveColor = Color.parseColor("#bef9b81b");
+        mWaveColor = Color.parseColor("#FF4081");//滑动提示字母框颜色
         mTextColorChoose = ContextCompat.getColor(context, android.R.color.white);
         mTextSize = context.getResources().getDimensionPixelSize(R.dimen.textSize);
         mHintTextSize = context.getResources().getDimensionPixelSize(R.dimen.hintTextSize);
@@ -129,6 +129,7 @@ public class WaveSideBar extends View {
         mTextPaint.setStyle(Paint.Style.FILL);
         mTextPaint.setTextSize(mHintTextSize);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
+
     }
 
     @Override
@@ -229,7 +230,6 @@ public class WaveSideBar extends View {
             mLettersPaint.setAntiAlias(true);
             mLettersPaint.setTextSize(mTextSize);
             mLettersPaint.setTextAlign(Paint.Align.CENTER);
-
             Paint.FontMetrics fontMetrics = mLettersPaint.getFontMetrics();
             float baseline = Math.abs(-fontMetrics.bottom - fontMetrics.top);
 
@@ -238,6 +238,7 @@ public class WaveSideBar extends View {
             if (i == mChoosePosition) {
                 mPointY = pointY;
             } else {
+                //绘画右边字母栏字体
                 canvas.drawText(mLetters.get(i), mPointX, pointY, mLettersPaint);
             }
         }

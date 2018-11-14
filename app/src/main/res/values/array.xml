@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="waveSideBarLetters">
+        <item>\u2191</item>
         <item>\u2606</item>
         <item>\u0023</item>
         <item>A</item>
@@ -38,10 +39,12 @@
         <item>公孙胜</item>
         <item>关 胜</item>
         <item>林 冲</item>
+        <item>B林 冲</item>
         <item>#秦 明</item>
         <item>$11111$</item>
         <item>呼延灼</item>
         <item>花 荣</item>
+        <item>e花 荣</item>
         <item>柴 进</item>
         <item>李 应</item>
         <item>鲁智深</item>

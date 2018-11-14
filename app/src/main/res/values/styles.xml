@@ -16,4 +16,8 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
+    <style name="main_333">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color33333</item>
+    </style>
 </resources>

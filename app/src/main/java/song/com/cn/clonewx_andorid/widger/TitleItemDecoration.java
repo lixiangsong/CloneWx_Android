@@ -68,7 +68,8 @@ public class TitleItemDecoration extends RecyclerView.ItemDecoration {
 
     /**
      * 绘制Title区域背景和文字的方法
-     *最先调用，绘制最下层的title
+     * 最先调用，绘制最下层的title
+     *
      * @param c
      * @param left
      * @param right
@@ -82,13 +83,15 @@ public class TitleItemDecoration extends RecyclerView.ItemDecoration {
         mPaint.setColor(TITLE_TEXT_COLOR);
 
         mPaint.getTextBounds(mData.get(position).getLetters(), 0, mData.get(position).getLetters().length(), mBounds);
-        c.drawText(mData.get(position).getLetters(), 
-                child.getPaddingLeft(), 
+        //左边字母位置
+        c.drawText(mData.get(position).getLetters(),
+                child.getPaddingLeft() + 20,
                 child.getTop() - params.topMargin - (mTitleHeight / 2 - mBounds.height() / 2), mPaint);
     }
 
     /**
      * 最后调用，绘制最上层的title
+     *
      * @param c
      * @param parent
      * @param state
@@ -124,13 +127,13 @@ public class TitleItemDecoration extends RecyclerView.ItemDecoration {
             }
         }
         mPaint.setColor(TITLE_BG_COLOR);
-        c.drawRect(parent.getPaddingLeft(), 
-                parent.getPaddingTop(), 
-                parent.getRight() - parent.getPaddingRight(), 
+        c.drawRect(parent.getPaddingLeft(),
+                parent.getPaddingTop(),
+                parent.getRight() - parent.getPaddingRight(),
                 parent.getPaddingTop() + mTitleHeight, mPaint);
         mPaint.setColor(TITLE_TEXT_COLOR);
         mPaint.getTextBounds(tag, 0, tag.length(), mBounds);
-        c.drawText(tag, child.getPaddingLeft(),
+        c.drawText(tag, child.getPaddingLeft() + 20,
                 parent.getPaddingTop() + mTitleHeight - (mTitleHeight / 2 - mBounds.height() / 2),
                 mPaint);
         if (flag)
@@ -147,7 +150,7 @@ public class TitleItemDecoration extends RecyclerView.ItemDecoration {
             if (position == 0) {
                 outRect.set(0, mTitleHeight, 0, 0);
             } else {
-                if (null != mData.get(position).getLetters() && 
+                if (null != mData.get(position).getLetters() &&
                         !mData.get(position).getLetters().equals(mData.get(position - 1).getLetters())) {
                     //字母不为空，并且不等于前一个，绘制title
                     outRect.set(0, mTitleHeight, 0, 0);

@@ -1,6 +1,13 @@
 package song.com.cn.clonewx_andorid.bean;
 
 public class SortModel {
+    public SortModel() {
+    }
+
+    public SortModel(String name, String letters) {
+        this.name = name;
+        this.letters = letters;
+    }
 
     private String name;
     private String letters;//显示拼音的首字母
