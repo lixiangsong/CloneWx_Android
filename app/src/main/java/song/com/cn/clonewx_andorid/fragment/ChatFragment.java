@@ -47,59 +47,37 @@ public class ChatFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatAdapter);
         initDate();
-
     }
 
     private void initDate() {
         list.add(new ChatBean("小六子", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()), "在吗?"));
-        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-100), "你好，老刘子"));
-        list.add(new ChatBean("订阅号", R.mipmap.dingyue, DateUtil.stampToDate(System.currentTimeMillis()-1200), "CSDN:科技创新"));
-        list.add(new ChatBean("张三", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-400), "哈喽"));
-        list.add(new ChatBean("花和尚", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-50), "在吗?"));
-        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-700), "你好，老刘子"));
-        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-10), "哈喽"));
-        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-2000), "在吗?"));
-        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-2300), "你好，老刘子"));
-        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-323222), "哈喽"));
-        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-3421200), "在吗?"));
-        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-6124562), "你好，老刘子"));
-        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-700), "你好，老刘子"));
-        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-10), "哈喽"));
-        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-2000), "在吗?"));
-        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-2300), "你好，老刘子"));
-        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-3222), "哈喽"));
-        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-555421200), "在吗?"));
-        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-4562), "你好，老刘子"));
-        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-6124562), "你好，老刘子"));
-        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-700), "你好，老刘子"));
-        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-10), "哈喽"));
-        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-2000), "在吗?"));
-        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-2300), "你好，老刘子"));
-        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis()-3222), "哈喽"));
-        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis()-555421200), "在吗?"));
-        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis()-4562), "你好，老刘子"));
+        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 100), "你好，老刘子"));
+        list.add(new ChatBean("订阅号", R.mipmap.dingyue, DateUtil.stampToDate(System.currentTimeMillis() - 1200), "CSDN:科技创新"));
+        list.add(new ChatBean("张三", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 400), "哈喽"));
+        list.add(new ChatBean("花和尚", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 50), "在吗?"));
+        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 700), "你好，老刘子"));
+        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 10), "哈喽"));
+        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 2000), "在吗?"));
+        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 2300), "你好，老刘子"));
+        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 323222), "哈喽"));
+        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 3421200), "在吗?"));
+        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 6124562), "你好，老刘子"));
+        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 700), "你好，老刘子"));
+        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 10), "哈喽"));
+        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 2000), "在吗?"));
+        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 2300), "你好，老刘子"));
+        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 3222), "哈喽"));
+        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 555421200), "在吗?"));
+        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 4562), "你好，老刘子"));
+        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 6124562), "你好，老刘子"));
+        list.add(new ChatBean("小美", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 700), "你好，老刘子"));
+        list.add(new ChatBean("帅哥哥", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 10), "哈喽"));
+        list.add(new ChatBean("黑猫警长", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 2000), "在吗?"));
+        list.add(new ChatBean("土豪", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 2300), "你好，老刘子"));
+        list.add(new ChatBean("奥特曼", R.mipmap.aaaaa, DateUtil.stampToDate(System.currentTimeMillis() - 3222), "哈喽"));
+        list.add(new ChatBean("神器", R.mipmap.dmsi, DateUtil.stampToDate(System.currentTimeMillis() - 555421200), "在吗?"));
+        list.add(new ChatBean("张三", R.mipmap.axm, DateUtil.stampToDate(System.currentTimeMillis() - 4562), "你好，老刘子"));
         chatAdapter.setNewData(list);
-    }
-
-    /**
-     * unicode 转字符串
-     */
-    public static String unicode2String(String unicode) {
-
-        StringBuffer string = new StringBuffer();
-
-        String[] hex = unicode.split("\\\\u");
-
-        for (int i = 1; i < hex.length; i++) {
-
-            // 转换出每一个代码点
-            int data = Integer.parseInt(hex[i], 16);
-
-            // 追加成string
-            string.append((char) data);
-        }
-
-        return string.toString();
     }
 
     @Override

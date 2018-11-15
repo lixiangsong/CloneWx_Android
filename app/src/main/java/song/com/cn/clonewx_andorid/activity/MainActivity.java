@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -51,6 +52,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        getX = (int) ev.getX();
+        getY = (int) ev.getY();
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public static int getX;
+    public static int getY;
+
+    @Override
     public void initData() {
         chatFragment = new ChatFragment();
         mailTXFragment = new MailTXFragment();
@@ -73,7 +84,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        Log.d("MainActivity", "----------onPageSelected: "+position);
+                        Log.d("MainActivity", "----------onPageSelected: " + position);
                         radioGroup.check(R.id.chat_rb);
                         break;
                     case 1:
@@ -99,10 +110,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.chat_rb:
                 viewPage.setCurrentItem(0);
-                Log.d("MainActivity", "----------onCheckedChanged: "+checkedId);
+                Log.d("MainActivity", "----------onCheckedChanged: " + checkedId);
                 break;
             case R.id.mail_rb:
                 viewPage.setCurrentItem(1);

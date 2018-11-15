@@ -23,6 +23,7 @@ public class SplashActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 goIntent(MainActivity.class);
+                finish();
             }
         }).start();
     }
