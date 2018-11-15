@@ -33,4 +33,5 @@ dependencies {
     compile files('src/libs/pinyin4j-2.5.0.jar')
     compile 'com.android.support:recyclerview-v7:25.3.1'
 
+    compile 'de.greenrobot:eventbus:3.0.0-beta1'
 }
