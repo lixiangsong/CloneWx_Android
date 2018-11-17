@@ -1,7 +1,6 @@
 package song.com.cn.clonewx_andorid.activity;
 
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -53,6 +52,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     RadioButton myRb;
     @BindView(R.id.right_iv)
     ImageView rightIv;
+    @BindView(R.id.search_iv)
+    ImageView searchIv;
     private ChatFragment chatFragment;
     private MailTXFragment mailTXFragment;
     private FindFragment findFragment;
@@ -66,7 +67,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         radioGroup.setOnCheckedChangeListener(this);
-
+        searchIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goIntent(SearchActivity.class);
+            }
+        });
     }
 
     @Override
@@ -156,13 +162,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             default:
                 break;
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     private List<PopupBean> popu = new ArrayList<>();

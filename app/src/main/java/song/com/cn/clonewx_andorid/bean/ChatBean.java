@@ -12,6 +12,9 @@ public class ChatBean {
     private String time;
     private String content;
 
+    public ChatBean() {
+    }
+
     public ChatBean(String name, int photo, String time, String content) {
         this.name = name;
         this.photo = photo;
