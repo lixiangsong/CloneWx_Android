@@ -169,7 +169,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private void showPopupWindow() {
         View view = LayoutInflater.from(this).inflate(R.layout.popup_window_item, null);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         PopupWindowAdapter po = new PopupWindowAdapter(popu);
         recyclerView.setHasFixedSize(true);

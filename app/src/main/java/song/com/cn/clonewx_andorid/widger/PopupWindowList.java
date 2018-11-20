@@ -28,17 +28,19 @@ public class PopupWindowList {
 
     private Context mContext;
     private PopupWindow mPopupWindow;
-    //the view where PopupWindow lie in
+    //点击位置的View
     private View mAnchorView;
-    //ListView item data
+    //弹框内容
     private List<String> mItemData;
-    //the animation for PopupWindow
+    //动画类型
     private int mPopAnimStyle;
-    //the PopupWindow width
+    //弹框宽度
     private int mPopupWindowWidth;
-    //the PopupWindow height
+    //弹框高度
     private int mPopupWindowHeight;
+    //弹框内容点击 回调
     private AdapterView.OnItemClickListener mItemClickListener;
+    //是否可点击
     private boolean mModal;
 
     public PopupWindowList(Context mContext) {
@@ -127,7 +129,7 @@ public class PopupWindowList {
         mPopView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         if (mPopupWindowWidth == 0) {
-            mPopupWindowWidth = mDeviceWidth / 4;
+            mPopupWindowWidth = mDeviceWidth / 3;
         }
         if (mPopupWindowHeight == 0) {
             mPopupWindowHeight = mItemData.size() * mPopView.getMeasuredHeight();

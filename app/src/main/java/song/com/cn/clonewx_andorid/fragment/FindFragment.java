@@ -16,6 +16,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import song.com.cn.clonewx_andorid.R;
 import song.com.cn.clonewx_andorid.friend.FriendActivity;
+import song.com.cn.clonewx_andorid.friend.ZxingCodeActivity;
 
 /**
  * @author: LXS
@@ -46,13 +47,15 @@ public class FindFragment extends Fragment {
 
     @OnClick({R.id.friend_rl, R.id.sao_yi_sao})
     public void onViewClicked(View view) {
+        Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.friend_rl:
-                Intent intent = new Intent(getActivity(), FriendActivity.class);
-                startActivity(intent);
+                intent.setClass(getActivity(), FriendActivity.class);
                 break;
             case R.id.sao_yi_sao:
+                intent.setClass(getActivity(), ZxingCodeActivity.class);
                 break;
         }
+        startActivity(intent);
     }
 }

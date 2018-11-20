@@ -23,7 +23,8 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
         <activity android:name=".friend.FriendActivity" />
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".friend.ZxingCodeActivity"></activity>
     </application>
 
 </manifest>
