@@ -17,7 +17,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -57,8 +56,8 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     private CaptureActivityHandler handler;
     private ViewfinderView viewfinderView;
     private ImageButton back;
-    private ImageButton btnFlash;
-    private Button btnAlbum; // 相册
+//    private ImageButton btnFlash;
+//    private Button btnAlbum; // 相册
     private boolean isFlashOn = false;
     private boolean hasSurface;
     private Vector<BarcodeFormat> decodeFormats;
@@ -90,11 +89,11 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
             }
         });
 
-        btnFlash = (ImageButton) findViewById(R.id.btn_flash);
-        btnFlash.setOnClickListener(flashListener);
+//        btnFlash = (ImageButton) findViewById(R.id.btn_flash);
+//        btnFlash.setOnClickListener(flashListener);
 
-        btnAlbum = (Button) findViewById(R.id.btn_album);
-        btnAlbum.setOnClickListener(albumOnClick);
+//        btnAlbum = (Button) findViewById(R.id.btn_album);
+//        btnAlbum.setOnClickListener(albumOnClick);
 
 //		cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
         hasSurface = false;
@@ -102,15 +101,15 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
 
     }
 
-    private View.OnClickListener albumOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //打开手机中的相册
-            Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); //"android.intent.action.GET_CONTENT"
-            innerIntent.setType("image/*");
-            startActivityForResult(innerIntent, REQUEST_CODE_SCAN_GALLERY);
-        }
-    };
+//    private View.OnClickListener albumOnClick = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            //打开手机中的相册
+//            Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); //"android.intent.action.GET_CONTENT"
+//            innerIntent.setType("image/*");
+//            startActivityForResult(innerIntent, REQUEST_CODE_SCAN_GALLERY);
+//        }
+//    };
 
 
     @Override
@@ -365,27 +364,27 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     /**
      *  闪光灯开关按钮
      */
-    private View.OnClickListener flashListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            try {
-                boolean isSuccess = CameraManager.get().setFlashLight(!isFlashOn);
-                if(!isSuccess){
-                    Toast.makeText(CaptureActivity.this, "暂时无法开启闪光灯", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (isFlashOn) {
-                    // 关闭闪光灯
-                    btnFlash.setImageResource(R.drawable.flash_off);
-                    isFlashOn = false;
-                } else {
-                    // 开启闪光灯
-                    btnFlash.setImageResource(R.drawable.flash_on);
-                    isFlashOn = true;
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    };
+//    private View.OnClickListener flashListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            try {
+//                boolean isSuccess = CameraManager.get().setFlashLight(!isFlashOn);
+//                if(!isSuccess){
+//                    Toast.makeText(CaptureActivity.this, "暂时无法开启闪光灯", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if (isFlashOn) {
+//                    // 关闭闪光灯
+//                    btnFlash.setImageResource(R.drawable.flash_off);
+//                    isFlashOn = false;
+//                } else {
+//                    // 开启闪光灯
+//                    btnFlash.setImageResource(R.drawable.flash_on);
+//                    isFlashOn = true;
+//                }
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//    };
 }
