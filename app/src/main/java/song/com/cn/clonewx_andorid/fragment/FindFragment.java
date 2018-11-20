@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,11 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import song.com.cn.clonewx_andorid.R;
 import song.com.cn.clonewx_andorid.friend.FriendActivity;
-import song.com.cn.clonewx_andorid.friend.ZxingCodeActivity;
+import song.com.cn.clonewx_andorid.google.zxing.activity.CaptureActivity;
+import song.com.cn.clonewx_andorid.google.zxing.view.Constant;
+import song.com.cn.clonewx_andorid.utils.ToastUtils;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * @author: LXS
@@ -47,15 +52,30 @@ public class FindFragment extends Fragment {
 
     @OnClick({R.id.friend_rl, R.id.sao_yi_sao})
     public void onViewClicked(View view) {
-        Intent intent = new Intent();
+
         switch (view.getId()) {
             case R.id.friend_rl:
-                intent.setClass(getActivity(), FriendActivity.class);
+                Intent intent = new Intent(getActivity(), FriendActivity.class);
+                startActivity(intent);
                 break;
             case R.id.sao_yi_sao:
-                intent.setClass(getActivity(), ZxingCodeActivity.class);
+                Intent intent2 = new Intent(getActivity(), CaptureActivity.class);
+                startActivityForResult(intent2, Constant.REQ_QR_CODE);
                 break;
         }
-        startActivity(intent);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //扫描结果回调
+        if (requestCode == Constant.REQ_QR_CODE && resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString(Constant.INTENT_EXTRA_KEY_QR_SCAN);
+            //将扫描出的信息显示出来
+            ToastUtils.showToast("扫描结果 " + scanResult, getActivity());
+            Log.d("FindFragment", "----------onActivityResult: " + scanResult);
+        }
     }
 }

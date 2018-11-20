@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="song.com.cn.clonewx_andorid">
 
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 摄像头权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".activity.MyApplication"
         android:allowBackup="true"
@@ -24,7 +30,8 @@
             android:launchMode="singleTask" />
         <activity android:name=".friend.FriendActivity" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".friend.ZxingCodeActivity"></activity>
+        <activity android:name=".friend.ZxingCodeActivity" />
+        <activity android:name=".google.zxing.activity.CaptureActivity" />
     </application>
 
 </manifest>
