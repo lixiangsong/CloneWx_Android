@@ -1,5 +1,9 @@
 package song.com.cn.clonewx_andorid.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -25,6 +29,8 @@ import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
 import song.com.cn.clonewx_andorid.BaseActivity;
+import song.com.cn.clonewx_andorid.JPush.ExampleUtil;
+import song.com.cn.clonewx_andorid.JPush.LocalBroadcastManager;
 import song.com.cn.clonewx_andorid.R;
 import song.com.cn.clonewx_andorid.adapter.HomeFragmentPagerAdapter;
 import song.com.cn.clonewx_andorid.adapter.PopupWindowAdapter;
@@ -60,6 +66,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private MyFragment myFragment;
     private List<Fragment> fragmentList = new ArrayList<>();
     private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
+    //极光
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
 
     @Override
     public void initView() {
@@ -142,6 +154,38 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 showPopupWindow();
             }
         });
+
+        registerMessageReceiver();
+    }
+
+    //for receive customer msg from jpush server
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
+    }
+    public static boolean isForeground = false;
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                    String messge = intent.getStringExtra(KEY_MESSAGE);
+                    String extras = intent.getStringExtra(KEY_EXTRAS);
+                    StringBuilder showMsg = new StringBuilder();
+                    showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                    if (!ExampleUtil.isEmpty(extras)) {
+                        showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                    }
+                    //接收推送过来的消息
+
+                }
+            } catch (Exception e) {
+            }
+        }
     }
 
     @Override
@@ -190,6 +234,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         popupWindow.showAsDropDown(rightIv, -360, 0);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isForeground = true;
+    }
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void dinsmid(MessageEvent mess) {
         if (mess.getName().equals("popupWindow")) {
@@ -204,5 +258,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
     }
 }
