@@ -1,8 +1,10 @@
 package song.com.cn.clonewx_andorid.fragment;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,6 +43,9 @@ public class FindFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.view_find, container, false);
         unbinder = ButterKnife.bind(this, view);
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 0);
+        }
         return view;
     }
 
@@ -59,6 +64,9 @@ public class FindFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.sao_yi_sao:
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 0);
+                }
                 Intent intent2 = new Intent(getActivity(), CaptureActivity.class);
                 startActivityForResult(intent2, Constant.REQ_QR_CODE);
                 break;
