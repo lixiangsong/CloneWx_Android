@@ -7,7 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="anim_menu_bottom">
+        <item name="android:windowEnterAnimation">@anim/menu_check_in</item>
+        <item name="android:windowExitAnimation">@anim/menu_check_out</item>
+    </style>
     <style name="StartTheme" parent="AppTheme">
         <item name="android:windowBackground">@mipmap/launcher_qd</item>
     </style>
